@@ -37,6 +37,21 @@ st.write(
     The model has been trained and tested on a dataset, and the accuracy is displayed below.
     """
 )
+st.write(
+age = st.number_input("Age", min_value=10, max_value=100, step=1, value=20)
+academic_pressure = st.slider("Academic Pressure (1-10)", min_value=1, max_value=10, value=5)
+cgpa = st.slider("CGPA (0-10)", min_value=0.0, max_value=10.0, step=0.1, value=7.5)
+study_satisfaction = st.slider("Study Satisfaction (1-10)", min_value=1, max_value=10, value=5)
+work_study_hours = st.number_input("Work/Study Hours per Week", min_value=0, max_value=100, step=1, value=20)
+)
+if st.button("Predict Depression Level"):
+    input_features = np.array([[age, academic_pressure, cgpa, study_satisfaction, work_study_hours]])
+    prediction = model.predict(input_features)
+    depression_status = "Depressed" if prediction[0] == 1 else "Not Depressed"
+    
+    # Display the result
+    st.write(f"### Prediction: {depression_status}")
+
 
 # Displaying the model accuracy
 st.subheader("Model Accuracy:")
