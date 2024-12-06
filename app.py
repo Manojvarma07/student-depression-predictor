@@ -38,11 +38,14 @@ st.write(
     """
 )
 st.write(
+# Collect user input
+st.write("## Input Features")
 age = st.number_input("Age", min_value=10, max_value=100, step=1, value=20)
 academic_pressure = st.slider("Academic Pressure (1-10)", min_value=1, max_value=10, value=5)
 cgpa = st.slider("CGPA (0-10)", min_value=0.0, max_value=10.0, step=0.1, value=7.5)
 study_satisfaction = st.slider("Study Satisfaction (1-10)", min_value=1, max_value=10, value=5)
 work_study_hours = st.number_input("Work/Study Hours per Week", min_value=0, max_value=100, step=1, value=20)
+
 )
 if st.button("Predict Depression Level"):
     input_features = np.array([[age, academic_pressure, cgpa, study_satisfaction, work_study_hours]])
